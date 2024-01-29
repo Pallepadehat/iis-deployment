@@ -1,8 +1,6 @@
 const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
-const cron = require("node-cron");
-const { checkCertificates } = require("./certificateChecker"); // Adjust the path accordingly
 
 const dev = process.env.NODE_ENV !== "production";
 
@@ -36,8 +34,5 @@ app.prepare().then(() => {
     })
     .listen(port, async () => {
       console.log(`> Ready on http://localhost:${port}`);
-
-      // Schedule the checkCertificates function to run every 5 minutes
-      await checkCertificates();
     });
 });
